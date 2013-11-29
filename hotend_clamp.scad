@@ -10,7 +10,7 @@ module clamp(){
 		union(){
 			for(i=[0:120:240]){
 				hull(){
-					rotate([0,0,i]) translate([33,0,0]) cylinder(r=6,h=clamp_h,center=true);
+					rotate([0,0,i]) translate([0,-35,0]) cylinder(r=6,h=clamp_h,center=true);
 					cylinder(r=6,h=clamp_h,center=true);
 				}
 			}
@@ -33,6 +33,37 @@ module clamp(){
 
 
 
+module Head_Mount(){
+
+	difference(){
+		union(){
+			hull(){
+				for(a = [0:120:240]){
+					rotate([0,0,a]) translate([0,21,0]) cylinder( r=4, h=clamp_h,center=true);
+				}
+			}
+		}
+
+		//Bolt holes
+		for(a = [0:120:240]){
+			rotate([0,0,a]) translate([0,21,0]) cylinder( r=2.2, h=clamp_h+1,center=true);
+		}
+	
+		//Hotend hole w/ pathway thing
+		cylinder(r=ubis_gap/2,h=clamp_h+1,center=true);
+		hull(){
+			cylinder(r=ubis_gap/2,h=clamp_h+1,center=true);
+			translate([0,-50,0]) cube([2*ubis_gap,1,clamp_h+1],center=true);
+
+		}
+
+	}
+}
+
+
+
+
 //DRAWING
 
-clamp();
+//clamp();
+Head_Mount();

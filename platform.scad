@@ -1,8 +1,10 @@
 include<configuration.scad>;
 use<hotend_clamp.scad>;
+use<carriage.scad>;
 $fn=20;
 
-plat_h = 8;
+plat_h = 10;
+arm_sep = 21;
 
 
 module ubis(){
@@ -22,20 +24,24 @@ module platform(){
 	difference(){
 		union(){
 			hull() for(i=[0:120:240]){
-
-				rotate([0,0,i]) translate([20,0,0]) cube([10,arm_sep+20,plat_h],center=true);
-
-
-
+				rotate([0,0,i]) translate([0,-25,0]) cube([10,arm_sep+20,plat_h],center=true);
+			}
+			for(i=[0:120:240]){
+				rotate([0,0,i]) translate([0,30,0]) connector();
 			}
 		}
-
+	
+		translate([0,0,10]) cube([100,100,10],center=true);
+		
+		
 		hull() for(i=[0:120:240]){
-			rotate([0,0,i]) translate([-20,0,0]) cylinder(r=5,h=plat_h+1,center=true);
+			rotate([0,0,i]) translate([0,-20,0]) cylinder(r=5,h=plat_h+1,center=true);
 		}
 		for(i=[0:120:240]){
-			rotate([0,0,i]) translate([-32,0,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
+			rotate([0,0,i]) translate([0,21,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
 		}	
+		
+		
 	}
 	
 
@@ -50,7 +56,4 @@ module platform(){
 %translate([0,0,-20]) ubis();
 platform();
 
-%translate([0,0,47]) rotate([0,0,60]) clamp();
-#translate([0,0,20]) for(i=[0:120:240]){
-	rotate([0,0,i]) translate([-32,0,0]) cylinder(r=M4/2,h=60,center=true);
-}	
+%translate([0,0,20]) rotate([0,0,0]) Head_Mount();

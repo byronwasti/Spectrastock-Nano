@@ -103,7 +103,7 @@ module carriage(){
 		}
 		
 		//endstop button holes
-		translate([arm_sep-swivel_sep/2,cubey,-5]) cylinder(r=3.4/2,h=20,center=true);
+		translate([arm_sep-swivel_sep/2,cubey+2,-5]) cylinder(r=3.4/2,h=20,center=true);
 
 
 	}
