@@ -16,13 +16,13 @@ pos_tem = 2; //temporary variable
 
 
 
-cubex = 4;
-cubey = 13;
+cubex = 6;
+cubey = 12;
 cubez = 10;
 cubie = [cubex,cubey,cubez];
 
 arm_sep = 20;
-swivel_sep = 5+cubex/2;
+swivel_sep = 13+cubex/2;
 
 
 
@@ -56,7 +56,9 @@ module carriage(){
 			//Connectors
 			translate([0,cubey,-lm8uu_h/2+height/2-10/4]) connector();
 
-
+			//Endstop button?
+			translate([arm_sep-swivel_sep/2,23,-lm8uu_h/2+height/2-10/4]) cube([cubex,10,cubez],center=true);
+			
 
 			for(i=[-1:2:1]){
 				
@@ -95,6 +97,9 @@ module carriage(){
 		
 			translate([0,0,-5]) cube([2,20,2],center=true); //top spectra hole
 		}
+		
+		//endstop button holes
+		translate([arm_sep-swivel_sep/2,24,-5]) cylinder(r=3.4/2,h=20,center=true);
 
 
 	}
@@ -120,7 +125,7 @@ module connector(){
 					translate([0,cubey/2,0]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex,center=true);
 
 
-					//get that extra support 
+					//get that extra support
 					difference(){
 						translate([0,-cubey/3,cubez/2]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex,center=true);
 						translate([0,0,cubez]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex+1,center=true);
@@ -129,14 +134,8 @@ module connector(){
 			}
 		}
 		
-		//The M3 nut hole
-		translate([0,cubey/3,0]) rotate([0,90,0]) cylinder(r=M3nut/2,h=31,center=true,$fn=6);
-		translate([0,cubey/3,0]) rotate([0,90,0]) cylinder(r=M3h/2,h=100,center=true,$fn=20);
-
-		for(i=[-1:2:1]){
-			translate([29*i,cubey/3,0]) rotate([0,90,0]) cylinder(r=M3washer/2,h=10,center=true);
-		}
-
+		//M3 holes
+		translate([0,cubey/3]) rotate([0,90,0]) cylinder(r=M3h/2,h=100,center=true);
 		
 	}	
 }

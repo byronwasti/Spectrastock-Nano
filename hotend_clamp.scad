@@ -2,7 +2,7 @@ include<configuration.scad>;
 
 $fn=60;
 clamp_h = 2.31;
-ubis_gap = 11.6;
+ubis_gap = 11.65;
 
 
 module clamp(){

@@ -44,7 +44,7 @@ M8h = 8; //Horizontal versions
 //Nuts & Washers
 
 M3washer = 7;
-M3nut = 6.8;
+M3nut = 7;
 
 //Size of other parts
 rod = 8;  //Dimension of smooth rod
