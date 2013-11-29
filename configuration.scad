@@ -18,25 +18,33 @@ module configBlock(){
 		}
 
 		union(){  //Horizontal Holes
-			translate([-7.5,10,0]) rotate([0,90,0]) cylinder(r=M3h/2,h=10,center=true);		
-			translate([-7.5,3,0]) rotate([0,90,0]) cylinder(r=M4h/2,h=10,center=true);
-			//stranslate([0,-8,0]) rotate([0,90,0]) cylinder(r=M8/2,h=10,center=true);
+			translate([-8,10,0]) rotate([0,90,0]) cylinder(r=M3h/2,h=10,center=true);		
+			translate([-8,3,0]) rotate([0,90,0]) cylinder(r=M4h/2,h=10,center=true);
+			translate([-10,-6,0]) rotate([0,90,0]) cylinder(r=M3nut/2,h=10,center=true,$fn=6);
+
+			translate([10,3,0]) rotate([0,90,0]) cylinder(r=M3washer/2,h=10,center=true);
+
+
+			//translate([0,-8,0]) rotate([0,90,0]) cylinder(r=M8/2,h=10,center=true);
 		}
 	}
 }
+
+//configBlock();
 
 //Bolts
 M3 = 4;
 M4 = 5;
 M8 = 9;
 
-M3h = 3.7;  //Horizontal versions
+M3h = 3.6;  //Horizontal versions
 M4h = 5;  //Horizontal versions
 M8h = 8; //Horizontal versions
 
-//Nuts
-M3_nut = 0;
-M4_nut = 0;
+//Nuts & Washers
+
+M3washer = 7;
+M3nut = 6.8;
 
 //Size of other parts
 rod = 8;  //Dimension of smooth rod
@@ -56,8 +64,8 @@ rod_height = 260;
 
 
 //Universal joints
-holewidth = 6;
-arm_sep = 40;
+//holewidth = 6;
+//arm_sep = 40;
 
 
 
