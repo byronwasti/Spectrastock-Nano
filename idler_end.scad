@@ -36,7 +36,7 @@ module m8poles(){
 	}
 }
 
-module motorend(){
+module idler_end(){
 	union(){
 		difference(){
 			union(){ //Getting the basic shape
@@ -121,13 +121,13 @@ if (draw_all == 1){
 
 	for(i=[0:120:270]){
 
-		rotate([0,0,i]) translate([0,80.6,0]) motorend();
+		rotate([0,0,i]) translate([0,80.6,0]) idler_end();
 		//%translate([0,0,100]) cylinder(r=50,h=100,center=true);
 
 	}
 }
 if(draw_all == 0){
-	motorend();
+	idler_end();
 }
 
 

@@ -37,6 +37,8 @@ module platform(){
 			rotate([0,0,i]) translate([-32,0,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
 		}	
 	}
+	
+
 }
 
 

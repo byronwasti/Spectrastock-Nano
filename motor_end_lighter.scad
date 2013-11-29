@@ -70,7 +70,7 @@ module motorend(){
 
 	}
 	//%translate([0,0,rod_height/2+42/2]) m8poles();
-	%translate([0,-47.5/2-25/2-5,-(end_height-42)/2]) nema17();
+	
 
 }
 
@@ -120,6 +120,7 @@ if (draw_all == 1){
 }
 if(draw_all == 0){
 	motorend();
+	%translate([0,-47.5/2-25/2-5,-(end_height-42)/2]) nema17();
 }
 
 
