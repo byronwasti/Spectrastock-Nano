@@ -1,28 +1,29 @@
 include<configuration.scad>;
 use<modules.scad>;
 use<idler_end.scad>;
+use<jaws.scad>;
 
 //VARIABLES
 
-lm8uu_r = 15/2;  //Gotta check this
+lm8uu_r = 15.5/2;  //Gotta check this
 lm8uu_h = 24.12;
 height = 15;
 thick = 5;
 
 
 
-ten_pos = 5;  //Position of tensioner in x-axis
+ten_pos = 5.4;  //Position of tensioner in x-axis
 pos_tem = 2; //temporary variable
 
 
 
 cubex = 6;
-cubey = 12;
+cubey = 15;
 cubez = 10;
 cubie = [cubex,cubey,cubez];
 
-arm_sep = 20;
-swivel_sep = 13+cubex/2;
+arm_sep = 21;
+swivel_sep = 13+cubex;
 
 
 
@@ -57,7 +58,10 @@ module carriage(){
 			translate([0,cubey,-lm8uu_h/2+height/2-10/4]) connector();
 
 			//Endstop button?
-			translate([arm_sep-swivel_sep/2,23,-lm8uu_h/2+height/2-10/4]) cube([cubex,10,cubez],center=true);
+			//translate([arm_sep-swivel_sep/2,cubey*1.7,-lm8uu_h/2+height/2-10/4]) difference(){
+			///	cube([cubex,cubey*.9,cubez],center=true);
+			//	translate([0,-cubey/5-1,0]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex+1,center=true);
+			//}
 			
 
 			for(i=[-1:2:1]){
@@ -93,13 +97,13 @@ module carriage(){
 
 			translate([0,-1,pos_tem]) rotate([90,0,0]) cylinder(r=M3washer/2, h=4, center=true);
 			translate([0,-1,pos_tem]) rotate([90,0,0]) cylinder(r=M3h/2, h=20, center=true);
-			translate([0,7,pos_tem]) rotate([90,0,0]) cylinder(r=M3nut/2, h=4, center=true, $fn=6);
+			translate([0,7,pos_tem]) rotate([90,90,0]) cylinder(r=M3nut/2, h=4, center=true, $fn=6);
 		
 			translate([0,0,-5]) cube([2,20,2],center=true); //top spectra hole
 		}
 		
 		//endstop button holes
-		translate([arm_sep-swivel_sep/2,24,-5]) cylinder(r=3.4/2,h=20,center=true);
+		translate([arm_sep-swivel_sep/2,cubey,-5]) cylinder(r=3.4/2,h=20,center=true);
 
 
 	}
@@ -127,15 +131,21 @@ module connector(){
 
 					//get that extra support
 					difference(){
-						translate([0,-cubey/3,cubez/2]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex,center=true);
-						translate([0,0,cubez]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex+1,center=true);
+						translate([0,-cubey/2,cubez/2]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex,center=true);
+						translate([0,-cubey/9+1,cubez+1]) rotate([0,90,0]) cylinder(r=cubez/1.6,h=cubex+1,center=true);
 					}
 				}
 			}
 		}
 		
 		//M3 holes
-		translate([0,cubey/3]) rotate([0,90,0]) cylinder(r=M3h/2,h=100,center=true);
+		translate([0,cubey/2]) rotate([0,90,0]) cylinder(r=M3h/2,h=100,center=true);
+		
+		//Nut holes
+		for(i=[-1:2:1],d=[-1:2:1]){
+
+			translate([arm_sep*i+swivel_sep/2*d-2*d,cubey/2,0]) rotate([90,0,90]) cylinder(r=M3nut/2,h=3,center=true,$fn=6);
+		}
 		
 	}	
 }
@@ -146,9 +156,13 @@ module connector(){
 
 //DRAW
 carriage();
+%translate([20,18,-5]) rotate([90,90,90]) jaws();
 
-
-
-%translate([0,0,-30]) rotate([0,0,180]) idler_end();
+//%translate([0,0,-100]) rotate([0,0,180]) idler_end();
 %m8poles();
 %lm8uu(lm8uu_h);
+
+
+
+
+
