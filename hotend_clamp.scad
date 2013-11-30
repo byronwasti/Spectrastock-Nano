@@ -46,7 +46,7 @@ module Head_Mount(){
 
 		//Bolt holes
 		for(a = [0:120:240]){
-			rotate([0,0,a]) translate([0,21,0]) cylinder( r=M4/2, h=clamp_h+1,center=true);
+			rotate([0,0,a]) translate([0,18,0]) cylinder( r=M4/2, h=clamp_h+1,center=true);
 		}
 	
 		//Hotend hole w/ pathway thing

@@ -37,6 +37,9 @@ module jaws() {
   }
 }
 
+module jaws_full(){
 translate([-50, 0, 0]) jaws();
 translate([50,0,0]) mirror([1,0,0]) jaws();
 translate([0, 0, 0]) rotate([90, 0, 90]) cylinder(r=r, h=80, center=true, $fn=6);
+}
+jaws_full();
