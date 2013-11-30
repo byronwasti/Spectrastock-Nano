@@ -2,7 +2,7 @@ include<configuration.scad>;
 
 $fn=60;
 clamp_h = 2.31;
-ubis_gap = 11.65;
+ubis_gap = 11.8;
 
 
 module clamp(){
@@ -39,14 +39,14 @@ module Head_Mount(){
 		union(){
 			hull(){
 				for(a = [0:120:240]){
-					rotate([0,0,a]) translate([0,21,0]) cylinder( r=4, h=clamp_h,center=true);
+					rotate([0,0,a]) translate([0,21,0]) cylinder( r=5, h=clamp_h,center=true);
 				}
 			}
 		}
 
 		//Bolt holes
 		for(a = [0:120:240]){
-			rotate([0,0,a]) translate([0,21,0]) cylinder( r=2.2, h=clamp_h+1,center=true);
+			rotate([0,0,a]) translate([0,21,0]) cylinder( r=M4/2, h=clamp_h+1,center=true);
 		}
 	
 		//Hotend hole w/ pathway thing
