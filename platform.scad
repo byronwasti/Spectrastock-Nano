@@ -24,10 +24,10 @@ module platform(){
 	difference(){
 		union(){
 			hull() for(i=[0:120:240]){
-				rotate([0,0,i]) translate([0,-25,0]) cube([10,arm_sep+20,plat_h],center=true);
+				rotate([0,0,i]) translate([0,-15,0]) cube([10,arm_sep+20,plat_h],center=true);
 			}
 			for(i=[0:120:240]){
-				rotate([0,0,i]) translate([0,30,0]) connector();
+				rotate([0,0,i]) translate([0,25,0]) connector();
 			}
 		}
 	
@@ -35,10 +35,13 @@ module platform(){
 		
 		
 		hull() for(i=[0:120:240]){
-			rotate([0,0,i]) translate([0,-20,0]) cylinder(r=5,h=plat_h+1,center=true);
+			rotate([0,0,i]) translate([0,-18,0]) cylinder(r=5,h=plat_h+1,center=true);
 		}
 		for(i=[0:120:240]){
-			rotate([0,0,i]) translate([0,21,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
+			rotate([0,0,i]) translate([0,18,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
+			rotate([0,0,i]) translate([0,-30,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
+
+			
 		}	
 		
 		
