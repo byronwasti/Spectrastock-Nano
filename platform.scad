@@ -40,6 +40,9 @@ module platform(){
 		for(i=[0:120:240]){
 			rotate([0,0,i]) translate([0,18,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
 			rotate([0,0,i]) translate([0,-30,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
+			//rotate([0,0,i]) translate([11.5,18.5,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
+			//rotate([0,0,i]) translate([-11.5,18.5,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
+
 
 			
 		}	

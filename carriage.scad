@@ -55,7 +55,7 @@ module carriage(){
 			translate([ten_pos,0,-lm8uu_h/2+height/2+1.5]) cube([10,5,height+3],center=true);
 
 			//Connectors
-			translate([0,cubey,-lm8uu_h/2+height/2-10/4]) connector();
+			translate([0,cubey,-lm8uu_h/2+height/2-10/4]) connector(1);
 
 			//Endstop button?
 			//translate([arm_sep-swivel_sep/2,cubey*1.7,-lm8uu_h/2+height/2-10/4]) difference(){
@@ -118,7 +118,7 @@ module rings(){
 
 
 
-module connector(){
+module connector(sup){
 	difference(){
 		union(){
 				
@@ -128,11 +128,12 @@ module connector(){
 					cube(cubie,center=true);
 					translate([0,cubey/2,0]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex,center=true);
 
-
+					if(sup == 1){
 					//get that extra support
-					difference(){
-						translate([0,-cubey/2,cubez/2]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex,center=true);
-						translate([0,-cubey/9+1,cubez+1]) rotate([0,90,0]) cylinder(r=cubez/1.6,h=cubex+1,center=true);
+						difference(){
+							translate([0,-cubey/2,cubez/2]) rotate([0,90,0]) cylinder(r=cubez/2,h=cubex,center=true);
+							translate([0,-cubey/9+1,cubez+1]) rotate([0,90,0]) cylinder(r=cubez/1.6,h=cubex+1,center=true);
+						}
 					}
 				}
 			}
