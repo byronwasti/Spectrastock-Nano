@@ -27,7 +27,7 @@ module platform(){
 				rotate([0,0,i]) translate([0,-38,0]) cube([1,1,plat_h],center=true);
 			}
 			for(i=[0:120:240]){
-				rotate([0,0,i]) translate([0,25,0]) connector(0);
+				rotate([0,0,i]) translate([0,24,0]) rotate([90,0,0]) connector(0);
 			}
 		}
 			

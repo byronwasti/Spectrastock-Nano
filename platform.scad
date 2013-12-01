@@ -24,27 +24,24 @@ module platform(){
 	difference(){
 		union(){
 			hull() for(i=[0:120:240]){
-				rotate([0,0,i]) translate([0,-15,0]) cube([10,arm_sep+20,plat_h],center=true);
+				rotate([0,0,i]) translate([0,-38,0]) cube([1,1,plat_h],center=true);
 			}
 			for(i=[0:120:240]){
-				rotate([0,0,i]) translate([0,25,0]) connector();
+				rotate([0,0,i]) translate([0,25,0]) rotate([0,0,0]) connector(0);
 			}
 		}
-	
-		translate([0,0,10]) cube([100,100,10],center=true);
-		
-		
-		hull() for(i=[0:120:240]){
-			rotate([0,0,i]) translate([0,-18,0]) cylinder(r=5,h=plat_h+1,center=true);
-		}
-		for(i=[0:120:240]){
-			rotate([0,0,i]) translate([0,18,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
-			rotate([0,0,i]) translate([0,-30,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
-			//rotate([0,0,i]) translate([11.5,18.5,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
-			//rotate([0,0,i]) translate([-11.5,18.5,0]) cylinder(r=M4/2,h=plat_h+1,center=true);
-
-
 			
+		cylinder(r=14,h=plat_h+3,center=true);
+		
+		for(i=[0:120:240],d=[-1:2:1]){
+			rotate([0,0,i]) translate([0,18,0]) rotate([90,0,0]) cylinder(r=M4/2,h=plat_h+3,center=true);
+			rotate([0,0,i]) translate([0,-20,0]) cylinder(r=M4/2,h=plat_h+3,center=true);
+
+
+			rotate([0,0,i]) translate([d*21,34,0]) cube([13,20,plat_h+3],center=true);
+			rotate([0,0,i]) translate([d*21,23,0]) cylinder(r=13/2,h=plat_h+3,center=true);
+
+
 		}	
 		
 		
@@ -59,7 +56,7 @@ module platform(){
 
 /********DRAWING********/
 
-translate([0,0,-20]) ubis();
+//translate([0,0,-20]) ubis();
 platform();
 
-%translate([0,0,20]) rotate([0,0,0]) Head_Mount();
+//translate([0,0,20]) rotate([0,0,0]) Head_Mount();
