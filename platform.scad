@@ -59,7 +59,7 @@ module platform(){
 
 /********DRAWING********/
 
-%translate([0,0,-20]) ubis();
+translate([0,0,-20]) ubis();
 platform();
 
 %translate([0,0,20]) rotate([0,0,0]) Head_Mount();
