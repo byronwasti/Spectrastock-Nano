@@ -2,7 +2,7 @@ include<configuration.scad>;
 use<platform.scad>;
 use<hotend_clamp.scad>;
 
-height = 8;
+height = 10;
 
 //MODULES
 module bowden(){
@@ -21,9 +21,9 @@ module bowden(){
 		}
 		cylinder(r=M4/2,h=50,center=true);
 
-		translate([0,0,0]) cylinder(r=10/2,h=6,center=true);
+		translate([0,0,1]) cylinder(r=10/2,h=4,center=true);
 
-		translate([0,0,-2]) cylinder(r=15.89/2+.5,h=6,center=true);
+		translate([0,0,-4]) cylinder(r=15.89/2+.5,h=6,center=true);
 	}
 }
 
