@@ -20,7 +20,10 @@ module bowden(){
 			rotate([0,0,i]) translate([0,-20,0]) cylinder(r=M4/2+.3,h=height+4, center=true);
 		}
 		cylinder(r=M4/2,h=50,center=true);
-		translate([0,0,-2]) cylinder(r=15.89/2+1,h=6,center=true);
+
+		translate([0,0,0]) cylinder(r=10/2,h=6,center=true);
+
+		translate([0,0,-2]) cylinder(r=15.89/2+.5,h=6,center=true);
 	}
 }
 
